@@ -1,32 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>Flowers</title>
+    <title>La casa del pan | El Hogar del Pan Artesanal de todos sabores</title>
+    <meta name="description" content="Panadería artesanal con productos frescos hechos diariamente. Conócenos, prueba nuestros productos y visítanos.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
-
 <body>
-    <div class="greetings">
-        <span>H</span>
-        <span>o</span>
-        <span>l</span>
-        <span>a</span>
-        <span>!</span>
-    </div>
-    <div class="description">
-        <span>ESTE DETALLE ES PARA TI :)</span>
-    </div>
-    <div class="button">
-        <button class="botones">
-            <a href="flower.html" style="color: #fff;">CLICK AQUÍ</a>
-        </button>
-    </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.jpg" alt="Logo Panadería Delicias" width="150" height="60">
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link active">Inicio</a></li>
+                    <li><a href="about.html" class="nav-link">Sobre Nosotros</a></li>
+                    <li><a href="products.html" class="nav-link">Productos</a></li>
+                    <li><a href="contact.html" class="nav-link">Contacto</a></li>
+                </ul>
+                <button class="menu-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
 
+    <!-- Hero -->
+    <section class="hero hero-index">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">Bienvenidos a <span>Panadería Elmer</span></h1>
+            <p class="hero-subtitle">Donde cada bocado es una caricia al alma. Pan recién horneado, pasteles invisibles y mucho amor en cada receta.</p>
+            <a href="products.html" class="btn btn-primary">Ver Nuestros Productos de calidad de dulzura</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos mas vendidos</h2>
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <img src="img/imagen1baguete.jpg" alt="Baguettes Doradas" class="featured-img">
+                    <h3>Baguettes Tradicionales</h3>
+                    <p>Hechas con masa madre y horneadas lentamente para una corteza crujiente y un interior esponjoso.</p>
+                </div>
+                <div class="featured-item">
+                    <img src="img/Croissants de Mantequilla.jpg" alt="Croissants de Mantequilla" class="featured-img">
+                    <h3>Croissants de Mantequilla</h3>
+                    <p>Laminados a mano con mantequilla de alta calidad. Perfectos para el desayuno o la merienda.</p>
+                </div>
+                <div class="featured-item">
+                    <img src="img/Tartas de Frutas de Temporada.jpg" alt="Tarta de Frutas" class="featured-img">
+                    <h3>Tartas de Frutas de Temporada</h3>
+                    <p>Decoradas con frutas frescas y crema pastelera casera. Ideales para celebraciones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Las opiniones de nuestros clientes</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">“¡El mejor pan que he probado en años! Cada mañana vengo a por mi baguette y un café. ¡Un ritual que no cambio por nada!”</p>
+                    <p class="testimonial-author">— Marta R., Clienta Habitual</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">“Pedimos una tarta para el cumpleaños de mi hija y fue el centro de atención. ¡Hermosa y deliciosa!”</p>
+                    <p class="testimonial-author">— Carlos M., Cliente Feliz</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">“La atención es increíble, el olor al entrar... ¡y el sabor! No hay panadería como esta en la ciudad.”</p>
+                    <p class="testimonial-author">— Lucía G., Vecina del Barrio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container newsletter-container">
+            <h2 class="newsletter-title">Nuestros panes tipicos de Bolivia</h2>
+            <p class="newsletter-text">Suscríbete a nuestro boletín y recibe recetas exclusivas, promociones semanales y noticias de la panadería.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Tu correo electrónico" required class="newsletter-input" id="newsletterEmail">
+                <button type="submit" class="btn btn-secondary">Suscribirme</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <img src="img/logo de una panaderia.jpg" alt="Logo Panadería Delicias" width="120" height="50">
+                <p>Hecho con amor, harina y tradición desde 1995.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Sobre Nosotros</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contáctanos</h4>
+                <address>
+                    Calle del Horno, 123<br>
+                    Barrio de las Flores, Madrid<br>
+                    📞 +34 912 345 678<br>
+                    ✉ hola@panaderiadelicias.es
+                </address>
+            </div>
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><img src="img/icono facebook.jpg" alt="Facebook"></a>
+                    <a href="#" aria-label="Instagram"><img src="img/icono instagram.jpg" alt="Instagram"></a>
+                    <a href="#" aria-label="Twitter"><img src="img/icono twiter.jpg" alt="Twitter"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Panadería Delicias. Todos los derechos reservados. Hecho con ❤️ en 4 cañadas.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
-
 </html>
