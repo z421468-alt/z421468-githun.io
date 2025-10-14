@@ -1,104 +1,115 @@
-// main.js - Funcionalidad completa para el sitio web de Panadería Delicias
+// =========================================================
+// main.js — Modo Día/Noche Total para todo el sitio web 🚗
+// Proyecto: Ventas de Automóviles
+// =========================================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const toggleButton = document.querySelector(".theme-toggle");
 
-    // Toggle menú hamburguesa en móviles
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navList = document.querySelector('.nav-list');
+  // Colores para modo Día
+  const temaDia = {
+    fondo: "#f8f9fa",
+    texto: "#222",
+    header: "#ffffff",
+    footer: "#e9ecef",
+    tarjetas: "#ffffff",
+    botones: "#007bff",
+    botonesTexto: "#ffffff"
+  };
 
-    if (menuToggle && navList) {
-        menuToggle.addEventListener('click', function() {
-            navList.classList.toggle('active');
-            const hamburger = document.querySelector('.hamburger');
-            hamburger.classList.toggle('active');
-        });
-    }
+  // Colores para modo Noche
+  const temaNoche = {
+    fondo: "#121212",
+    texto: "#f1f1f1",
+    header: "#1c1c1c",
+    footer: "#181818",
+    tarjetas: "#1f1f1f",
+    botones: "#ff9800",
+    botonesTexto: "#000000"
+  };
 
-    // Manejo del formulario de newsletter
-    const newsletterForm = document.getElementById('newsletterForm');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('newsletterEmail').value;
-            if (email) {
-                alert(`¡Gracias por suscribirte, ${email}! Pronto recibirás nuestras delicias en tu bandeja de entrada.`);
-                newsletterForm.reset();
-            }
-        });
-    }
+  // Verificar si hay un modo guardado en el navegador
+  let modoActual = localStorage.getItem("modo") || "dia";
+  aplicarTema(modoActual);
 
-    // Filtro de productos por categoría
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const products = document.querySelectorAll('.product-card');
+  // Evento de clic en el icono de engranaje / sol / luna
+  toggleButton.addEventListener("click", () => {
+    modoActual = modoActual === "dia" ? "noche" : "dia";
+    aplicarTema(modoActual);
+    localStorage.setItem("modo", modoActual);
+  });
 
-    if (filterButtons.length > 0) {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Quitar clase 'active' de todos
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Añadir 'active' al botón clicado
-                button.classList.add('active');
+  // Función para aplicar los colores del tema a todo el sitio
+  function aplicarTema(modo) {
+    const colores = modo === "dia" ? temaDia : temaNoche;
 
-                const filterValue = button.getAttribute('data-filter');
+    // Transición suave en todo el sitio
+    body.style.transition = "background-color 0.8s ease, color 0.8s ease";
+    body.style.backgroundColor = colores.fondo;
+    body.style.color = colores.texto;
 
-                products.forEach(product => {
-                    if (filterValue === 'all' || product.getAttribute('data-category') === filterValue) {
-                        product.style.display = 'block';
-                        product.style.opacity = '0';
-                        setTimeout(() => {
-                            product.style.opacity = '1';
-                        }, 50);
-                    } else {
-                        product.style.display = 'none';
-                    }
-                });
-            });
-        });
-    }
+    // Cambiar encabezado y pie de página
+    const header = document.querySelector("header");
+    const footer = document.querySelector("footer");
+    if (header) header.style.backgroundColor = colores.header;
+    if (footer) footer.style.backgroundColor = colores.footer;
 
-    // Validación y envío del formulario de contacto
-    const contactForm = document.getElementById('contactForm');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Obtener valores
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value.trim();
-
-            // Validación básica
-            if (!name || !email || !subject || !message) {
-                alert('Por favor, completa todos los campos del formulario.');
-                return;
-            }
-
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                alert('Por favor, introduce un correo electrónico válido.');
-                return;
-            }
-
-            // Simular envío
-            alert(`¡Gracias, ${name}! Hemos recibido tu mensaje sobre "${subject}" y te responderemos pronto a ${email}.`);
-
-            // Resetear formulario
-            contactForm.reset();
-        });
-    }
-
-    // Efecto de scroll suave para enlaces internos (si se usan en el futuro)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+    // Cambiar tarjetas, secciones, productos, galería
+    const elementos = document.querySelectorAll(
+      ".card, .producto, .vehiculo, .galeria-item, .contenedor, .seccion, section, .info-box, .cliente"
+    );
+    elementos.forEach(el => {
+      el.style.transition = "background-color 0.8s ease, color 0.8s ease, box-shadow 0.8s ease";
+      el.style.backgroundColor = colores.tarjetas;
+      el.style.color = colores.texto;
+      el.style.boxShadow = modo === "dia"
+        ? "0 4px 10px rgba(0,0,0,0.1)"
+        : "0 4px 10px rgba(255,255,255,0.1)";
     });
 
+    // Cambiar color de botones
+    const botones = document.querySelectorAll("button, .btn, input[type='submit']");
+    botones.forEach(btn => {
+      btn.style.transition = "background-color 0.6s ease, color 0.6s ease, border 0.6s ease";
+      btn.style.backgroundColor = colores.botones;
+      btn.style.color = colores.botonesTexto;
+      btn.style.border = "none";
+    });
+
+    // Cambiar color de enlaces
+    const enlaces = document.querySelectorAll("a");
+    enlaces.forEach(a => {
+      a.style.transition = "color 0.6s ease";
+      a.style.color = modo === "dia" ? "#007bff" : "#ffcc00";
+    });
+
+    // Cambiar color de iconos
+    const iconos = document.querySelectorAll("i, .icon, .theme-toggle");
+    iconos.forEach(icon => {
+      icon.style.transition = "color 0.6s ease, transform 0.4s ease";
+      icon.style.color = modo === "dia" ? "#333" : "#ffcc00";
+    });
+
+    // Cambiar imagen del fondo si deseas personalizarlo
+    if (modo === "dia") {
+      toggleButton.textContent = "🌙";
+    } else {
+      toggleButton.textContent = "🌞";
+    }
+  }
+
+  // ============================
+  // Ajuste automático según la hora
+  // ============================
+  const hora = new Date().getHours();
+  if (!localStorage.getItem("modo")) {
+    if (hora >= 19 || hora < 6) {
+      aplicarTema("noche");
+      localStorage.setItem("modo", "noche");
+    } else {
+      aplicarTema("dia");
+      localStorage.setItem("modo", "dia");
+    }
+  }
 });

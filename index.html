@@ -1,141 +1,216 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La casa del pan | El Hogar del Pan Artesanal de todos sabores</title>
-    <meta name="description" content="Panadería artesanal con productos frescos hechos diariamente. Conócenos, prueba nuestros productos y visítanos.">
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventas de Automóviles de Elmer Cespedes</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="img/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0e6b96c.js" crossorigin="anonymous"></script>
+  <style>
+    /* ====== Slider ====== */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+    .slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    /* ====== Autos destacados ====== */
+    .featured-cars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .car-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+    .car-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .car-card:hover img {
+      transform: scale(1.1);
+    }
+    .car-name {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-weight: 600;
+      padding: 8px 0;
+      background: rgba(0,0,0,0.6);
+    }
+
+    /* ====== Contador autos vendidos ====== */
+    .counter {
+      text-align: center;
+      font-size: 2rem;
+      margin: 40px 0;
+    }
+
+    /* ====== Video promocional ====== */
+    .promo-video {
+      width: 100%;
+      max-width: 800px;
+      margin: 30px auto;
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+  </style>
 </head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <img src="img/logo.jpg" alt="Logo Panadería Delicias" width="150" height="60">
-            </a>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link active">Inicio</a></li>
-                    <li><a href="about.html" class="nav-link">Sobre Nosotros</a></li>
-                    <li><a href="products.html" class="nav-link">Productos</a></li>
-                    <li><a href="contact.html" class="nav-link">Contacto</a></li>
-                </ul>
-                <button class="menu-toggle" aria-label="Toggle navigation menu">
-                    <span class="hamburger"></span>
-                </button>
-            </nav>
-        </div>
-    </header>
+<body class="light">
 
-    <!-- Hero -->
-    <section class="hero hero-index">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1 class="hero-title">Bienvenidos a <span>Panadería Elmer</span></h1>
-            <p class="hero-subtitle">Donde cada bocado es una caricia al alma. Pan recién horneado, pasteles invisibles y mucho amor en cada receta.</p>
-            <a href="products.html" class="btn btn-primary">Ver Nuestros Productos de calidad de dulzura</a>
-        </div>
-    </section>
+  <!-- ================= HEADER ================= -->
+<header class="site-header" style="position: sticky; top: 0; background-color: #fff; z-index: 1000; padding: 10px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+  <div class="container header-inner" style="display:flex; justify-content:space-between; align-items:center;">
+    <!-- Logo + Nombre del sitio -->
+    <div class="brand" style="display:flex; align-items:center; gap:15px;">
+      <!-- Logo fijo -->
+      <img src="img/img1.jpg" 
+           alt="Logo Ventas de Automóviles" 
+           class="logo" 
+           style="width:60px; height:auto; border-radius:8px; object-fit: contain;">
+      <div>
+        <h1 style="margin:0;">Ventas de Automóviles de ELmer Cespedes</h1>
+        <p style="margin:0; font-size:0.9rem;">Mi sitio web con información de autos en venta</p>
+      </div>
+    </div>
 
-    <!-- Featured Products -->
-    <section class="featured">
-        <div class="container">
-            <h2 class="section-title">Nuestros Productos mas vendidos</h2>
-            <div class="featured-grid">
-                <div class="featured-item">
-                    <img src="img/imagen1baguete.jpg" alt="Baguettes Doradas" class="featured-img">
-                    <h3>Baguettes Tradicionales</h3>
-                    <p>Hechas con masa madre y horneadas lentamente para una corteza crujiente y un interior esponjoso.</p>
-                </div>
-                <div class="featured-item">
-                    <img src="img/Croissants de Mantequilla.jpg" alt="Croissants de Mantequilla" class="featured-img">
-                    <h3>Croissants de Mantequilla</h3>
-                    <p>Laminados a mano con mantequilla de alta calidad. Perfectos para el desayuno o la merienda.</p>
-                </div>
-                <div class="featured-item">
-                    <img src="img/Tartas de Frutas de Temporada.jpg" alt="Tarta de Frutas" class="featured-img">
-                    <h3>Tartas de Frutas de Temporada</h3>
-                    <p>Decoradas con frutas frescas y crema pastelera casera. Ideales para celebraciones.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Navegación principal -->
+    <nav class="main-nav">
+      <ul class="nav-list" style="display:flex; gap:20px; list-style:none;">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Las opiniones de nuestros clientes</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">“¡El mejor pan que he probado en años! Cada mañana vengo a por mi baguette y un café. ¡Un ritual que no cambio por nada!”</p>
-                    <p class="testimonial-author">— Marta R., Clienta Habitual</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">“Pedimos una tarta para el cumpleaños de mi hija y fue el centro de atención. ¡Hermosa y deliciosa!”</p>
-                    <p class="testimonial-author">— Carlos M., Cliente Feliz</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">“La atención es increíble, el olor al entrar... ¡y el sabor! No hay panadería como esta en la ciudad.”</p>
-                    <p class="testimonial-author">— Lucía G., Vecina del Barrio</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Redes sociales y modo día/noche -->
+    <div class="socials" style="display:flex; gap:10px; align-items:center;">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/59170000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <button class="theme-toggle" title="Cambiar modo de color"><i class="fas fa-gear"></i></button>
+    </div>
+  </div>
+</header>
 
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container newsletter-container">
-            <h2 class="newsletter-title">Nuestros panes tipicos de Bolivia</h2>
-            <p class="newsletter-text">Suscríbete a nuestro boletín y recibe recetas exclusivas, promociones semanales y noticias de la panadería.</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" placeholder="Tu correo electrónico" required class="newsletter-input" id="newsletterEmail">
-                <button type="submit" class="btn btn-secondary">Suscribirme</button>
-            </form>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-logo">
-                <img src="img/logo de una panaderia.jpg" alt="Logo Panadería Delicias" width="120" height="50">
-                <p>Hecho con amor, harina y tradición desde 1995.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Enlaces Rápidos</h4>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="products.html">Productos</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h4>Contáctanos</h4>
-                <address>
-                    Calle del Horno, 123<br>
-                    Barrio de las Flores, Madrid<br>
-                    📞 +34 912 345 678<br>
-                    ✉ hola@panaderiadelicias.es
-                </address>
-            </div>
-            <div class="footer-social">
-                <h4>Síguenos</h4>
-                <div class="social-icons">
-                    <a href="#" aria-label="Facebook"><img src="img/icono facebook.jpg" alt="Facebook"></a>
-                    <a href="#" aria-label="Instagram"><img src="img/icono instagram.jpg" alt="Instagram"></a>
-                    <a href="#" aria-label="Twitter"><img src="img/icono twiter.jpg" alt="Twitter"></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Panadería Delicias. Todos los derechos reservados. Hecho con ❤️ en 4 cañadas.</p>
-        </div>
-    </footer>
+  <!-- ================= SLIDER ================= -->
+  <section class="slider">
+    <img src="img/img4.jpg" alt="Slider Auto 1">
+    <img src="img/img6.jpg" alt="Slider Auto 2">
+    <img src="img/img8.jpg" alt="Slider Auto 3">
+  </section>
 
-    <script src="main.js"></script>
+  <!-- ================= AUTOS DESTACADOS ================= -->
+  <section class="section featured">
+    <div class="container">
+      <h2>Autos Destacados</h2>
+      <div class="featured-cars">
+        <div class="car-card">
+          <img src="img/img2.jpg" alt="Mazda CX-5">
+          <div class="car-name">Mazda CX-5</div>
+        </div>
+        <div class="car-card">
+          <img src="img/img3.jpg" alt="Ford Ranger">
+          <div class="car-name">Ford Ranger</div>
+        </div>
+        <div class="car-card">
+          <img src="img/img4.jpg" alt="Mercedes Benz CLA">
+          <div class="car-name">Mercedes-Benz CLA</div>
+        </div>
+        <div class="car-card">
+          <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=800" alt="BMW Serie 3">
+          <div class="car-name">BMW Serie 3</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTADOR AUTOS VENDIDOS ================= -->
+  <section class="counter">
+    Autos vendidos: <span id="autos-vendidos">0</span>
+  </section>
+
+  <!-- ================= VIDEO PROMOCIONAL ================= -->
+<section class="section">
+  <h2>¡Encuentra tu auto ideal!</h2>
+  <p>Explora nuestra selección de vehículos disponibles para ti.</p>
+  <div class="video-container">
+    <iframe width="100%" height="500" src="https://www.youtube.com/embed/sxniEvv2Ngo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner" style="display:flex; justify-content:space-between; flex-wrap:wrap;">
+      <div class="footer-col">
+        <h3>Ventas de Automóviles</h3>
+        <p>© <span id="year"></span> Todos los derechos reservados.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contáctanos</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Calle Principal #123, La Paz, Bolivia</p>
+        <p><i class="fas fa-phone"></i> +591 70000000</p>
+        <p><i class="fas fa-envelope"></i> contacto@ventasautos.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a><br>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br>
+        <a href="https://wa.me/59170000000" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // ================= SLIDER =================
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slider img');
+    function showSlides() {
+      slides.forEach(slide => slide.style.display = 'none');
+      slideIndex++;
+      if(slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = 'block';
+      setTimeout(showSlides, 4000);
+    }
+    showSlides();
+
+    // ================= CONTADOR ANIMADO =================
+    const counter = document.getElementById('autos-vendidos');
+    let count = 0;
+    const target = 120; // Número de autos vendidos
+    const interval = setInterval(() => {
+      if(count < target) {
+        count++;
+        counter.textContent = count;
+      } else {
+        clearInterval(interval);
+      }
+    }, 50);
+  </script>
 </body>
 </html>
