@@ -1,0 +1,356 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 80, 170, 0.55), transparent 25%),
+    radial-gradient(circle at 80% 15%, rgba(255, 30, 150, 0.45), transparent 22%),
+    linear-gradient(135deg, #2a001e, #620047, #12000f);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* FONDO CON CORAZONES */
+.fondo-corazones::before,
+.fondo-corazones::after {
+  content: "♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡";
+  position: fixed;
+  color: rgba(255, 180, 225, 0.35);
+  font-size: 42px;
+  letter-spacing: 18px;
+  width: 100%;
+  animation: moverFondo 12s linear infinite;
+}
+
+.fondo-corazones::before {
+  top: 25px;
+  left: -40px;
+}
+
+.fondo-corazones::after {
+  bottom: 25px;
+  right: -40px;
+  animation-direction: reverse;
+}
+
+@keyframes moverFondo {
+  from {
+    transform: translateX(-80px);
+  }
+  to {
+    transform: translateX(80px);
+  }
+}
+
+/* CONTENEDOR */
+.contenedor {
+  width: 92%;
+  max-width: 430px;
+  min-height: 620px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.firma {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+/* MENSAJE INICIAL */
+.mensaje-inicial {
+  margin-top: 35px;
+  width: 92%;
+  background: rgba(0, 80, 65, 0.85);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  box-shadow: 0 0 25px rgba(0, 255, 190, 0.25);
+  animation: aparecer 1s ease;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #d9fff4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.contenido-msj {
+  flex: 1;
+}
+
+.contenido-msj h3 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.contenido-msj p {
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+
+.boton-click {
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.mano {
+  position: absolute;
+  right: 12px;
+  bottom: -38px;
+  font-size: 2.2rem;
+  animation: tocar 1s infinite;
+}
+
+@keyframes tocar {
+  0%, 100% {
+    transform: translateY(0) rotate(-15deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-15deg);
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mensaje-inicial.ocultar {
+  opacity: 0;
+  transform: translateY(-40px);
+  pointer-events: none;
+  transition: 0.8s ease;
+}
+
+/* SORPRESA */
+.sorpresa {
+  display: none;
+  width: 100%;
+  text-align: center;
+  margin-top: 55px;
+}
+
+.sorpresa.activa {
+  display: block;
+  animation: aparecer 1s ease;
+}
+
+.titulo-amor {
+  font-size: 2.7rem;
+  color: #ff7ac8;
+  text-shadow:
+    0 0 10px #ff4fb3,
+    0 0 25px #ff1493,
+    0 0 45px #ff0080;
+  margin-bottom: 35px;
+  opacity: 0;
+  animation: encender 1.4s ease forwards;
+}
+
+@keyframes encender {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+/* VENTANA DE CÓDIGO */
+.codigo-card {
+  width: 92%;
+  margin: auto;
+  background: rgba(5, 20, 35, 0.94);
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 0 35px rgba(255, 50, 165, 0.45);
+  border: 1px solid rgba(255, 150, 220, 0.25);
+}
+
+.barra {
+  height: 38px;
+  background: #09111f;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.barra span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.barra span:nth-child(1) {
+  background: #ff5f56;
+}
+
+.barra span:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.barra span:nth-child(3) {
+  background: #27c93f;
+}
+
+.barra p {
+  margin-left: 10px;
+  font-size: 0.78rem;
+  color: #9fb8d8;
+}
+
+pre {
+  min-height: 250px;
+  padding: 18px;
+  color: #a8ffcf;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.corazon-cae {
+  position: fixed;
+  top: -40px;
+  color: rgba(255, 130, 210, 0.75);
+  pointer-events: none;
+  animation: caer linear forwards;
+  z-index: 1;
+}
+
+@keyframes caer {
+  to {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .contenedor {
+    min-height: 560px;
+  }
+
+  .titulo-amor {
+    font-size: 2.2rem;
+  }
+
+  pre {
+    font-size: 0.78rem;
+  }
+}
+.zona-superior-amor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.foto-amor {
+  width: 115px;
+  height: 115px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #ff9bd6;
+  box-shadow:
+    0 0 20px rgba(255, 90, 180, 0.8),
+    0 0 45px rgba(255, 20, 140, 0.5);
+  animation: flotarFoto 3s ease-in-out infinite;
+}
+
+@keyframes flotarFoto {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.05);
+  }
+}
+.zona-arriba {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 20;
+}
+
+.foto-arriba {
+  width: 105px;
+  height: 105px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #ff8fd0;
+  box-shadow:
+    0 0 18px rgba(255, 120, 210, 0.9),
+    0 0 45px rgba(255, 20, 150, 0.55);
+  animation: flotarFoto 3s ease-in-out infinite;
+}
+
+@keyframes flotarFoto {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.05);
+  }
+}
+
+.btn-musica {
+  border: none;
+  padding: 9px 20px;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #ff4fa3, #ff9bc7);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(255, 80, 170, 0.5);
+  transition: 0.3s ease;
+}
+
+.btn-musica:hover {
+  transform: scale(1.08);
+  background: linear-gradient(45deg, #ff2f91, #ff75b8);
+}
